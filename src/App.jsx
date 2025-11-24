@@ -1,6 +1,7 @@
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import Menu from './components/Menu/Menu';
+import Footer from './components/Footer/Footer';
 import styled from 'styled-components';
 
 const MainContent = styled.main`
@@ -18,6 +19,8 @@ function App() {
       <main>
         <Menu />
       </main>
+
+      <Footer />
     </>
   );
 }

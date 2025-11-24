@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
+import AboutSection from './components/AboutSection/AboutSection';
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 import styled from 'styled-components';
@@ -17,6 +18,7 @@ function App() {
       <HeroSection />
       
       <main>
+        <AboutSection />
         <Menu />
       </main>
 

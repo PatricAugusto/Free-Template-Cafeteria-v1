@@ -20,7 +20,7 @@ export const StyledButton = styled.a`
 
   &:hover {
     background-color: transparent;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary}; 
     border-color: ${({ theme }) => theme.colors.secondary};
   }
 `;

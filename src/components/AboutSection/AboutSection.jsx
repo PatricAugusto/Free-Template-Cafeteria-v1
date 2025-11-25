@@ -34,7 +34,7 @@ const AboutSection = () => {
         </TextContent>
         
         <ImageWrapper>
-          <img src={AboutImage} alt="Nossa cafeteria e ambiente acolhedor" />
+          <img src={AboutImage} alt="Interior acolhedor da cafeteria Coffee Blend, mostrando a área de balcão." />
         </ImageWrapper>
       </ContentWrapper>
     </AboutContainer>

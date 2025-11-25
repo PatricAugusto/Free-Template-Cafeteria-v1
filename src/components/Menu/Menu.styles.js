@@ -4,6 +4,14 @@ export const MenuSection = styled.section`
   padding: ${({ theme }) => theme.spacings.extraLarge} 10%;
   background-color: ${({ theme }) => theme.colors.background};
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacings.large} 5%; 
+  }
+
+  @media (max-width: 480px) {
+    padding: ${({ theme }) => theme.spacings.large} 3%;
+  }
 `;
 
 export const MenuTitle = styled.h2`

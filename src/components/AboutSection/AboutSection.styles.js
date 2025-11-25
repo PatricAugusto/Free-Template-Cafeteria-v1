@@ -12,6 +12,15 @@ export const AboutTitle = styled.h2`
   color: ${theme.colors.primary};
   margin-bottom: ${theme.spacings.large};
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 2rem; 
+    text-align: center; 
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
 `;
 
 export const ContentWrapper = styled.div`

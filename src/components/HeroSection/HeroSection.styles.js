@@ -35,11 +35,23 @@ export const Title = styled.h1`
   font-size: ${({ theme }) => theme.typography.size.huge};
   margin-bottom: ${({ theme }) => theme.spacings.medium};
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem; 
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.background}; 
+  color: ${({ theme }) => theme.colors.background};
   font-size: ${({ theme }) => theme.typography.size.large};
   margin-bottom: ${({ theme }) => theme.spacings.large};
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;

@@ -4,6 +4,14 @@ import { StyledButton } from '../Button/Button.styles';
 export const ContactContainer = styled.section`
   padding: ${({ theme }) => theme.spacings.extraLarge} 10%;
   background-color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacings.large} 5%; 
+  }
+
+  @media (max-width: 480px) {
+    padding: ${({ theme }) => theme.spacings.large} 3%; 
+  }
 `;
 
 export const ContactTitle = styled.h2`
@@ -21,7 +29,8 @@ export const ContactContent = styled.div`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; 
+    gap: ${({ theme }) => theme.spacings.large};
   }
 `;
 

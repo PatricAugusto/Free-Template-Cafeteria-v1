@@ -18,7 +18,6 @@ export const NavContainer = styled.header`
 `;
 
 export const Logo = styled.h1`
-  /* Estilos para o logo */
   font-family: ${({ theme }) => theme.typography.heading};
   font-size: ${({ theme }) => theme.typography.size.large};
   color: ${({ theme }) => theme.colors.primary};
@@ -29,10 +28,73 @@ export const Logo = styled.h1`
 export const NavList = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.spacings.large}; 
+  
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: ${({ theme }) => theme.colors.white}; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: ${({ theme }) => theme.spacings.medium} 0;
+    
+    transform: translateY(${props => (props.$isOpen ? '0' : '-100%')});
+    opacity: ${props => (props.$isOpen ? '1' : '0')};
+    pointer-events: ${props => (props.$isOpen ? 'auto' : 'none')};
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
 `;
 
 export const NavItem = styled.li`
   display: inline-block;
+  
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacings.small} ${({ theme }) => theme.spacings.extraLarge};
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.background};
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+`;
+
+export const HamburgerIcon = styled.div`
+  display: none; 
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  z-index: 1001; 
+  
+  @media (max-width: 768px) {
+    display: flex; 
+  }
+  
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: ${({ theme }) => theme.colors.primary};
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+    
+    &:first-child {
+      transform: ${({ $isOpen }) => ($isOpen ? 'rotate(45deg)' : 'rotate(0)')};
+    }
+    
+    &:nth-child(2) {
+      opacity: ${({ $isOpen }) => ($isOpen ? '0' : '1')};
+      transform: ${({ $isOpen }) => ($isOpen ? 'translateX(20px)' : 'translateX(0)')};
+    }
+    
+    &:nth-child(3) {
+      transform: ${({ $isOpen }) => ($isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
+  }
 `;
 
 export const NavLink = styled.a`

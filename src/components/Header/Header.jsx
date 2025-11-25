@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavContainer, Logo, NavList, NavItem, NavLink } from './Header.styles';
+import React, { useState } from 'react';
+import { NavContainer, Logo, NavList, NavItem, NavLink, HamburgerIcon } from './Header.styles';
 
 const navItems = [
   { id: 'home', label: 'Início', href: '#home' },
@@ -9,15 +9,33 @@ const navItems = [
 ];
 
 const Header = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <NavContainer>
       <Logo>Coffe Blend</Logo>
       
+      <HamburgerIcon 
+        onClick={() => setIsOpen(!isOpen)} 
+        $isOpen={isOpen} 
+      >
+        <div />
+        <div />
+        <div />
+      </HamburgerIcon>
+      
       <nav>
-        <NavList>
+        <NavList $isOpen={isOpen}>
           {navItems.map((item) => (
             <NavItem key={item.id}>
-              <NavLink href={item.href}>{item.label}</NavLink>
+              <NavLink href={item.href} onClick={handleLinkClick}>
+                {item.label}
+              </NavLink>
             </NavItem>
           ))}
         </NavList>

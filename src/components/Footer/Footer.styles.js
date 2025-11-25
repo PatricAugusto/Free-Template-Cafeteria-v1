@@ -16,7 +16,7 @@ export const FooterContent = styled.div`
   
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: ${({ theme }) => theme.spacings.large};
+    padding: ${({ theme }) => theme.spacings.medium}; 
     gap: ${({ theme }) => theme.spacings.extraLarge};
     text-align: center;
   }

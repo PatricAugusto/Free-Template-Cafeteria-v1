@@ -128,3 +128,30 @@ export const NavLink = styled.a`
     color: ${({ theme }) => theme.colors.secondary};
   }
 `;
+
+export const CartButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.primary};
+  position: relative;
+  margin-left: ${({ theme }) => theme.spacings.large};
+  
+  @media (max-width: 768px) {
+    order: 3; 
+    margin-left: ${({ theme }) => theme.spacings.medium};
+  }
+`;
+
+export const CartCount = styled.span`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+`;

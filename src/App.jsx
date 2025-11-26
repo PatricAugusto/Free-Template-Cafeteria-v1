@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import AboutSection from './components/AboutSection/AboutSection';
 import Menu from './components/Menu/Menu';
 import ContactSection from './components/ContactSection/ContactSection';
 import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
 import styled from 'styled-components';
 
 const MainContent = styled.main`
@@ -13,9 +15,13 @@ const MainContent = styled.main`
 `;
 
 function App() {
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
+
   return (
     <>
-      <Header />
+      <Header toggleCart={toggleCart} />
       <HeroSection />
       
       <main>
@@ -27,6 +33,7 @@ function App() {
       </main>
 
       <Footer />
+      <Cart isOpen={isCartOpen} toggleCart={toggleCart} />
     </>
   );
 }

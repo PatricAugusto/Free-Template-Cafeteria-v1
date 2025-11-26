@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavContainer, Logo, NavList, NavItem, NavLink, HamburgerIcon } from './Header.styles';
+import { useCart } from '../../context/CartContext';
+import { NavContainer, Logo, NavList, NavItem, NavLink, HamburgerIcon, CartButton, CartCount } from './Header.styles';
 
 const navItems = [
   { id: 'home', label: 'Início', href: '#home' },
@@ -8,13 +9,14 @@ const navItems = [
   { id: 'contact', label: 'Contato', href: '#contact' },
 ];
 
-const Header = () => {
-
+const Header = ({ toggleCart }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleLinkClick = () => {
     setIsOpen(false);
   };
+
+  const { cartItems } = useCart();
+  const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <NavContainer>
@@ -40,6 +42,12 @@ const Header = () => {
           ))}
         </NavList>
       </nav>
+
+      <CartButton onClick={toggleCart}>
+        🛒
+        {itemCount > 0 && <CartCount>{itemCount}</CartCount>}
+      </CartButton>
+
     </NavContainer>
   );
 };

@@ -34,9 +34,30 @@ export const ContactContent = styled.div`
   }
 `;
 
+export const FormBlock = styled.div`
+  flex: 1;
+  padding: ${({ theme }) => theme.spacings.medium};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+`;
+
 export const InfoBlock = styled.div`
   flex: 1;
   text-align: left;
+`;
+
+export const InfoTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.size.large};
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: ${({ theme }) => theme.spacings.medium};
+`;
+
+export const InfoText = styled.p`
+  font-size: ${({ theme }) => theme.typography.size.medium};
+  color: ${({ theme }) => theme.colors.text};
+  line-height: 1.5;
+  margin-bottom: ${({ theme }) => theme.spacings.large};
 `;
 
 export const InfoItem = styled.div`
@@ -79,6 +100,18 @@ export const ContactForm = styled.form`
   gap: ${({ theme }) => theme.spacings.medium};
 `;
 
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Label = styled.label`
+  font-size: ${({ theme }) => theme.typography.size.small};
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 4px;
+  font-weight: 600;
+`;
+
 export const Input = styled.input`
   padding: ${({ theme }) => theme.spacings.small};
   border: 1px solid #CCCCCC;
@@ -92,7 +125,7 @@ export const Input = styled.input`
   }
 `;
 
-export const TextArea = styled.textarea`
+export const Textarea = styled.textarea`
   ${Input}; 
   resize: vertical;
 `;

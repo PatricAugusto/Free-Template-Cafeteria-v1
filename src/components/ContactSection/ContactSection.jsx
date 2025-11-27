@@ -1,66 +1,107 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { 
   ContactContainer, 
-  ContactTitle, 
   ContactContent, 
   InfoBlock, 
-  InfoItem, 
-  FormWrapper, 
-  FormTitle, 
+  FormBlock, 
+  InfoTitle, 
+  InfoText, 
   ContactForm, 
+  FormGroup, 
+  Label, 
   Input, 
-  TextArea, 
+  Textarea, 
   SubmitButton 
 } from './ContactSection.styles';
-import Button from '../Button/Button'; 
+
+import { StyledButton } from '../Button/Button.styles'; 
+
+const contactContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.4, 
+    },
+  },
+};
+
+const blockVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
 const ContactSection = () => {
-  // Simulação de função de submissão
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 }); 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
-    e.target.reset(); // Limpa o formulário
+    e.target.reset(); 
   };
 
   return (
-    <ContactContainer id="contact">
-      <ContactTitle>Fale Conosco</ContactTitle>
-      <ContactContent>
-        <InfoBlock>
-          <FormTitle>Informações Essenciais</FormTitle>
-          <InfoItem>
-            <h4>📍 Endereço</h4>
-            <p>Rua do Café Expresso, 123 | Bairro Central, Coffeetown - SP</p>
-          </InfoItem>
+    <ContactContainer id="contact" ref={ref}>
+      <motion.div
+        variants={contactContainerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <ContactContent>
           
-          <InfoItem>
-            <h4>⏰ Horário de Funcionamento</h4>
-            <p>Segunda a Sexta: 8h às 19h</p>
-            <p>Sábados: 9h às 18h</p>
-            <p>Domingos: Fechado</p>
-          </InfoItem>
+          <motion.div variants={blockVariants} style={{ flex: 1 }}>
+            <InfoBlock>
+              <InfoTitle>Estamos Prontos para te Atender</InfoTitle>
+              <InfoText>
+                Visite-nos ou entre em contato para pedidos, reservas e eventos.
+              </InfoText>
+              
+              <p>
+                <strong>Endereço:</strong> Rua da Cafeteria, 123 | Bairro Central
+              </p>
+              <p>
+                <strong>Telefone:</strong> (49) 98765-4321
+              </p>
+              <p>
+                <strong>E-mail:</strong> contato@coffeeblend.com
+              </p>
+              <p>
+                <strong>Horário:</strong> Seg - Sex: 8h às 19h | Sáb: 9h às 17h
+              </p>
+            </InfoBlock>
+          </motion.div>
 
-          <InfoItem>
-            <h4>📞 Contato</h4>
-            <p>Telefone: (49) 98765-4321</p>
-            <p>Email: contato@coffeeblend.com.br</p>
-          </InfoItem>
-        </InfoBlock>
+          <motion.div variants={blockVariants} style={{ flex: 1 }}>
+            <FormBlock>
+              <InfoTitle>Envie sua Mensagem</InfoTitle>
+              <ContactForm onSubmit={handleSubmit}>
+                <FormGroup>
+                  <Label htmlFor="name">Nome Completo</Label>
+                  <Input type="text" id="name" required />
+                </FormGroup>
 
-        <FormWrapper>
-          <FormTitle>Envie sua Mensagem</FormTitle>
-          <ContactForm onSubmit={handleSubmit}>
-            <Input type="text" placeholder="Seu Nome" required />
-            <Input type="email" placeholder="Seu E-mail" required />
-            <Input type="text" placeholder="Assunto" />
-            <TextArea placeholder="Sua Mensagem..." rows="5" required />
-            
-            <SubmitButton as={Button} type="submit">
-              Enviar Agora
-            </SubmitButton>
-          </ContactForm>
-        </FormWrapper>
-      </ContactContent>
+                <FormGroup>
+                  <Label htmlFor="email">E-mail</Label>
+                  <Input type="email" id="email" required />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label htmlFor="message">Mensagem</Label>
+                  <Textarea id="message" rows="5" required />
+                </FormGroup>
+
+                <SubmitButton as="button" type="submit">
+                  Enviar Mensagem
+                </SubmitButton>
+              </ContactForm>
+            </FormBlock>
+          </motion.div>
+          
+        </ContactContent>
+      </motion.div>
     </ContactContainer>
   );
 };

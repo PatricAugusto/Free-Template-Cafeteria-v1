@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react'; 
+import { motion, useInView } from 'framer-motion';
 import { menuData } from '../../data/menuData'; 
 import ProductCard from '../ProductCard/ProductCard';
 import { 
@@ -8,21 +9,67 @@ import {
   CategoryContainer, 
 } from './Menu.styles';
 
+const menuContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, 
+    },
+  },
+};
+
+const categoryVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.5, 
+      ease: "easeOut",
+      staggerChildren: 0.05 
+    } 
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+};
+
 const Menu = () => {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <MenuSection id="menu">
+    <MenuSection id="menu" ref={ref}> 
       <MenuTitle>Nosso Cardápio</MenuTitle>
       
-      {menuData.map((categoryData, index) => (
-        <CategoryContainer key={index}>
-          <CategoryTitle>{categoryData.category}</CategoryTitle>
+      <motion.div
+        variants={menuContainerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"} 
+      >
+        {menuData.map((categoryData) => (
           
-          {categoryData.items.map((item) => (
-            
-            <ProductCard key={item.id} item={item} />           
-          ))}
-        </CategoryContainer>
-      ))}
+          <motion.div
+            key={categoryData.category}
+            variants={categoryVariants} 
+          >
+            <CategoryContainer> 
+              <CategoryTitle>{categoryData.category}</CategoryTitle>
+              
+              {categoryData.items.map((item) => (
+                <motion.div key={item.id} variants={itemVariants}> 
+                  <ProductCard item={item} />
+                </motion.div>
+              ))}
+            </CategoryContainer>
+          </motion.div>
+          
+        ))}
+      </motion.div>
 
     </MenuSection>
   );

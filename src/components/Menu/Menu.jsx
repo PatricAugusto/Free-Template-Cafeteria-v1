@@ -1,23 +1,14 @@
 import React from 'react';
-import { useCart } from '../../context/CartContext';
-import { menuData } from '../../data/menuData';
+import { menuData } from '../../data/menuData'; 
+import ProductCard from '../ProductCard/ProductCard';
 import { 
   MenuSection, 
   MenuTitle, 
   CategoryTitle, 
   CategoryContainer, 
-  MenuItem, 
-  ItemHeader, 
-  ItemName, 
-  ItemPrice, 
-  ItemDescription,
-  AddButton
 } from './Menu.styles';
 
 const Menu = () => {
-
-  const { addItemToCart } = useCart();
-
   return (
     <MenuSection id="menu">
       <MenuTitle>Nosso Cardápio</MenuTitle>
@@ -26,19 +17,9 @@ const Menu = () => {
         <CategoryContainer key={index}>
           <CategoryTitle>{categoryData.category}</CategoryTitle>
           
-          {categoryData.items.map((item, itemIndex) => (
-            <MenuItem key={itemIndex}>
-              <ItemHeader>
-                <ItemName>{item.name}</ItemName>
-                <ItemPrice>{item.price}</ItemPrice>
-              </ItemHeader>
-              <ItemDescription>{item.description}</ItemDescription>
-
-              <AddButton onClick={() => addItemToCart(item)}>
-                Adicionar
-              </AddButton>
-
-            </MenuItem>
+          {categoryData.items.map((item) => (
+            
+            <ProductCard key={item.id} item={item} />           
           ))}
         </CategoryContainer>
       ))}

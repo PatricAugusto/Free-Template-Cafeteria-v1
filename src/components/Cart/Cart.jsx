@@ -22,7 +22,7 @@ const CartItemDisplay = ({ item }) => {
     <CartItem>
       <ItemDetails>
         <ItemName>{item.name}</ItemName>
-        <ItemPrice>{item.price}</ItemPrice>
+        <ItemPrice>{item.price}</ItemPrice> 
       </ItemDetails>
       
       <QuantityControl>
@@ -35,12 +35,21 @@ const CartItemDisplay = ({ item }) => {
 };
 
 const Cart = ({ isOpen, toggleCart }) => {
-  const { cartItems, cartTotal } = useCart();
+  const { cartItems, cartTotal, clearCart } = useCart();
   
   const formatTotal = (value) => {
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   };
   
+  const handleCheckout = () => {
+    console.log("Pedido finalizado:", cartItems);
+    
+    alert(`Pedido no valor de ${formatTotal(cartTotal)} finalizado com sucesso! Retire seu pedido em 30 minutos.`);
+    
+    clearCart();
+    toggleCart();
+  };
+
   return (
     <>
       <CartOverlay $isOpen={isOpen} onClick={toggleCart} />
@@ -67,7 +76,8 @@ const Cart = ({ isOpen, toggleCart }) => {
               <span>Total:</span>
               <span>{formatTotal(cartTotal)}</span>
             </TotalContainer>
-            <CheckoutButton onClick={() => alert('Pronto para o Checkout!')}>
+            
+            <CheckoutButton onClick={handleCheckout}>
               Finalizar Pedido
             </CheckoutButton>
           </>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react'; 
+import { motion, useInView } from 'framer-motion';
 import Button from '../Button/Button';
 import { 
   AboutContainer, 
@@ -11,30 +12,78 @@ import {
 
 import AboutImage from '../../assets/about-image.jpeg'; 
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: "easeOut",
+      staggerChildren: 0.5
+    } 
+  },
+};
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
 const AboutSection = () => {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
   return (
-    <AboutContainer id="about">
+    <AboutContainer id="about" ref={ref}>
       <ContentWrapper>
-        <TextContent>
+        
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"} 
+          style={{ flex: 1, textAlign: 'left' }}
+        >
           <AboutTitle>Nossa História e Paixão pelo Grão</AboutTitle>
           
-          <Paragraph>
-            Desde 2018, a Coffee Blend tem sido um refúgio para amantes de café. Nossa jornada começou com uma simples torradeira em uma garagem e a paixão por encontrar o grão perfeito. Acreditamos que cada xícara conta uma história de dedicação.
-          </Paragraph>
+          <motion.div variants={textItemVariants}> 
+             <Paragraph>
+               Desde 2018, a **Coffee Blend** tem sido um refúgio...
+             </Paragraph>
+          </motion.div>
           
-          <Paragraph>
-            Trabalhamos diretamente com pequenos produtores, garantindo grãos de alta qualidade e práticas de comércio justo. Torramos o café diariamente, em pequenos lotes, para garantir a frescura e o perfil de sabor único que você merece.
-          </Paragraph>
+          <motion.div variants={textItemVariants}>
+             <Paragraph>
+               Trabalhamos diretamente com pequenos produtores...
+             </Paragraph>
+          </motion.div>
           
-          <Paragraph>
-            Venha nos visitar e sinta a diferença que a paixão verdadeira faz.
-          </Paragraph>
+          <motion.div variants={textItemVariants}>
+             <Paragraph>
+               Venha nos visitar e sinta a diferença que a paixão verdadeira faz.
+             </Paragraph>
+          </motion.div>
           
-          <Button href="#contact">Fale Conosco</Button>
-        </TextContent>
+          <motion.div variants={textItemVariants}>
+             <Button href="#contact">Fale Conosco</Button>
+          </motion.div>
+          
+        </motion.div>
         
         <ImageWrapper>
-          <img src={AboutImage} alt="Interior acolhedor da cafeteria Coffee Blend, mostrando a área de balcão." />
+          <motion.img 
+            src={AboutImage} 
+            alt="Nossa cafeteria e ambiente acolhedor" 
+            variants={imageVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"} 
+          />
         </ImageWrapper>
       </ContentWrapper>
     </AboutContainer>

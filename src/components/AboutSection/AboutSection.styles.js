@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../../styles/Theme';
+import { motion } from 'framer-motion';
 
 export const AboutContainer = styled.section`
   padding: ${theme.spacings.extraLarge} 10%;
@@ -68,7 +69,8 @@ export const ImageWrapper = styled.div`
   border-radius: 8px; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
   
-  img {
+  img, 
+  ${motion.img} 
     width: 100%;
     height: auto;
     display: block;

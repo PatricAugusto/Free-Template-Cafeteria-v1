@@ -1,26 +1,30 @@
 import styled from 'styled-components';
 
 export const NavContainer = styled.header`
-  width: 100%;
-  padding: ${({ theme }) => theme.spacings.medium} ${({ theme }) => theme.spacings.extraLarge};
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  position: sticky; 
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
+  padding: ${({ theme }) => theme.spacings.medium} 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacings.medium};
-  }
+  background-color: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+  color: ${({ theme }) => theme.colors.white}; 
 `;
 
 export const Logo = styled.h1`
   font-family: ${({ theme }) => theme.typography.heading};
   font-size: ${({ theme }) => theme.typography.size.large};
-  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.white};
   margin: 0; 
   cursor: pointer;
 `;
@@ -28,6 +32,8 @@ export const Logo = styled.h1`
 export const NavList = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.spacings.large}; 
+  color: ${({ theme }) => theme.colors.white};
+  list-style: none;
   
   @media (max-width: 768px) {
     position: absolute;
@@ -48,6 +54,7 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   display: inline-block;
+  color: ${({ theme }) => theme.colors.white};
   
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacings.small} ${({ theme }) => theme.spacings.extraLarge};

@@ -37,14 +37,29 @@ export const ContactContent = styled.div`
 export const FormBlock = styled.div`
   flex: 1;
   padding: ${({ theme }) => theme.spacings.medium};
-  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  background-color: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const InfoBlock = styled.div`
   flex: 1;
   text-align: left;
+  padding: ${({ theme }) => theme.spacings.medium};
+  border-radius: 8px;
+
+  background-color: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  color: ${({ theme }) => theme.colors.text}; 
 `;
 
 export const InfoTitle = styled.h3`

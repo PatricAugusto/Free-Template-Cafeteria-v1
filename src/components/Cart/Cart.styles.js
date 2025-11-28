@@ -31,6 +31,17 @@ export const CartSidebar = styled.aside`
   transform: translateX(${props => (props.$isOpen ? '0' : '100%')});
   transition: transform 0.3s ease-in-out;
 
+  background-color: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px); 
+  border-left: 1px solid rgba(255, 255, 255, 0.4); 
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); 
+
+  transform: translateX(${props => (props.$isOpen ? '0' : '100%')});
+  transition: transform 0.3s ease-in-out;
+  
+  color: ${({ theme }) => theme.colors.text};
+
   @media (max-width: 480px) {
     width: 100%; 
   }

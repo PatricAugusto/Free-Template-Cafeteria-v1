@@ -2,15 +2,17 @@ import styled from 'styled-components';
 import HeroBackground from '../../assets/hero-bg.jpeg'; 
 
 export const HeroContainer = styled.section`
-  background: url(${HeroBackground}) no-repeat center center/cover;
-  height: 90vh; 
-  width: 100%;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
   position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  background-image: url(${HeroBackground});
+  background-size: cover;
+  background-position: center;
+  
   &::before {
     content: '';
     position: absolute;
@@ -18,40 +20,43 @@ export const HeroContainer = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1; 
   }
 `;
 
 export const HeroContent = styled.div`
   position: relative;
   z-index: 2; 
-  text-align: center;
-  max-width: 800px;
-  padding: ${({ theme }) => theme.spacings.extraLarge};
+  color: ${({ theme }) => theme.colors.white};
+  max-width: 700px;
+  padding: 0 20px;
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.typography.size.huge};
+  font-family: ${({ theme }) => theme.typography.heading};
+  font-size: 5rem; 
+  font-weight: 700;
   margin-bottom: ${({ theme }) => theme.spacings.medium};
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  
+  color: ${({ theme }) => theme.colors.white}; 
 
-  @media (max-width: 768px) {
-    font-size: 2.5rem; 
+  @media (max-width: 992px) {
+    font-size: 4rem;
   }
-
-  @media (max-width: 480px) {
-    font-size: 2rem;
+  @media (max-width: 576px) {
+    font-size: 3rem;
   }
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.colors.background};
   font-size: ${({ theme }) => theme.typography.size.large};
+  line-height: 1.5;
   margin-bottom: ${({ theme }) => theme.spacings.large};
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  
+  color: ${({ theme }) => theme.colors.white}; 
 
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
+  @media (max-width: 576px) {
+    font-size: ${({ theme }) => theme.typography.size.medium};
   }
 `;

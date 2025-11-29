@@ -64,15 +64,19 @@ export const Paragraph = styled.p`
 
 export const ImageWrapper = styled.div`
   flex: 1; 
-  max-width: 500px; 
+  max-width: 500px;
+  height: 500px;
   overflow: hidden;
   border-radius: 8px; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  display: flex;
   
   img, 
   ${motion.img} 
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     display: block;
     transition: transform 0.3s ease;
     
@@ -83,5 +87,6 @@ export const ImageWrapper = styled.div`
 
   @media (max-width: 992px) {
     max-width: 100%; 
+    height: 350px;
   }
 `;

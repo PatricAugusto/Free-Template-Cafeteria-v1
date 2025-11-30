@@ -11,11 +11,11 @@ export const NavContainer = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  background-color: rgba(255, 255, 255, 0.1); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
 
   color: ${({ theme }) => theme.colors.secondary};
 `;
@@ -24,7 +24,7 @@ export const Logo = styled.h1`
   font-family: ${({ theme }) => theme.typography.heading};
   font-size: ${({ theme }) => theme.typography.size.large};
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.accent};
   margin: 0; 
   cursor: pointer;
 `;

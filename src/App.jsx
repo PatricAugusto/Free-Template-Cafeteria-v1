@@ -11,6 +11,7 @@ import styled from 'styled-components';
 const MainContent = styled.main`
   min-height: calc(100vh - 80px); 
   padding: ${({ theme }) => theme.spacings.extraLarge} 0;
+  padding-top: 80px;
   text-align: center;
 `;
 

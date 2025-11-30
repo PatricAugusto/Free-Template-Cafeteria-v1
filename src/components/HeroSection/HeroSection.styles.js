@@ -5,7 +5,7 @@ export const HeroContainer = styled.section`
   position: relative;
   height: 100vh;
   display: flex;
-carolina-marinelli-PkbyxvkGWcU-unsplash  align-items: center;
+  align-items: center;
   justify-content: center;
   text-align: center;
   

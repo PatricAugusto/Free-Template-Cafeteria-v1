@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import HeroBackground from '../../assets/hero-bg.jpeg'; 
+import HeroBackground from '../../assets/hero-bg.jpg'; 
 
 export const HeroContainer = styled.section`
   position: relative;
   height: 100vh;
   display: flex;
-  align-items: center;
+carolina-marinelli-PkbyxvkGWcU-unsplash  align-items: center;
   justify-content: center;
   text-align: center;
   

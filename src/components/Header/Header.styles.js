@@ -12,19 +12,19 @@ export const NavContainer = styled.header`
   align-items: center;
 
   background-color: rgba(255, 255, 255, 0.1); 
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); 
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 
-  color: ${({ theme }) => theme.colors.white}; 
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Logo = styled.h1`
   font-family: ${({ theme }) => theme.typography.heading};
   font-size: ${({ theme }) => theme.typography.size.large};
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.secondary};
   margin: 0; 
   cursor: pointer;
 `;
@@ -32,7 +32,7 @@ export const Logo = styled.h1`
 export const NavList = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.spacings.large}; 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.secondary};
   list-style: none;
   
   @media (max-width: 768px) {
@@ -54,7 +54,7 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   display: inline-block;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.secondary};
   
   @media (max-width: 768px) {
     padding: ${({ theme }) => theme.spacings.small} ${({ theme }) => theme.spacings.extraLarge};
@@ -64,6 +64,7 @@ export const NavItem = styled.li`
     
     &:last-child {
       border-bottom: none;
+      color: ${({ theme }) => theme.colors.primary};
     }
   }
 `;

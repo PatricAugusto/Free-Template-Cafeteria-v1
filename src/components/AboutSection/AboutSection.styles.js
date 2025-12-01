@@ -71,8 +71,8 @@ export const ImageWrapper = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
   display: flex;
   
-  img, 
-  ${motion.img} 
+ & img, 
+  & .about-image { 
     width: 100%;
     height: 100%;
     object-fit: cover;

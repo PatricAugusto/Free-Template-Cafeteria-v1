@@ -10,7 +10,7 @@ import {
   Paragraph 
 } from './AboutSection.styles';
 
-import AboutImage from '../../assets/about-image.jpeg'; 
+import AboutImage from '../../assets/about-image.jpg'; 
 
 const containerVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -83,6 +83,7 @@ const AboutSection = () => {
             variants={imageVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"} 
+            className="about-image"
           />
         </ImageWrapper>
       </ContentWrapper>
